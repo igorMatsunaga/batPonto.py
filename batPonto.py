@@ -1,57 +1,40 @@
-import time
 from selenium import webdriver
 from datetime import datetime, timedelta
 from selenium.webdriver.common.keys import Keys
+import time
 
-username = 'igor'
-password = 'Abril'
+username = 'igortomio'
+password = 'Abril123123'
 agora = datetime.now()
-td = '2018-04-29 22:09:01.804925'
-td1 = '2018-04-30 22:10:01.804925'
-td2 = '2018-04-30 22:11:01.804925'
-td3 = '2018-04-30 22:12:01.804925'
-
-
-driver = webdriver.Chrome('C:\\Users\\Admin\\Desktop\\beckup//chromedriver')
+td = '2018-04-29 07:30:01.804925'
+td1 = '2018-04-30 11:30:01.804925'
+td2 = '2018-04-30 12:31:01.804925'
+td3 = '2018-04-30 16:35:01.804925'
 
 def batPonto():
-
-    driver.get('https://url')
+    # Criar Instancia
+    driver = webdriver.Chrome('C:\\Users\\igortomio\\Desktop\\backup\\chromedriver_win32//chromedriver')
+    # Abrir Pagina
+    driver.get('http://srv-vibpan01:8082/sistema/login.xhtml')
+    # Maximizar janela
     driver.maximize_window()
-    elem = driver.find_element_by_id("j_username")
+    # Instancia formularios
+    elem = driver.find_element_by_id("frm:login")
     elem.send_keys(username)
-    elem = driver.find_element_by_id("j_password")
+    elem = driver.find_element_by_id("frm:senha")
     elem.send_keys(password)
     elem.send_keys(Keys.RETURN)
-
-    elem = driver.find_element_by_css_selector(".input.textInput")
-    elem.send_keys("Posted using Python's Selenium WebDriver bindings!")
-    elem = driver.find_element_by_css_selector("input[value=\"Publicar\"]")
+    # aperta botão
     elem.click()
+    # Redireciona Pagina
+    driver.get('http://srv-vibpan01:8082/sistema/secured/Registro.xhtml')
+    # Instancia botão
+    btn = driver.find_element_by_xpath('//*[@id="botaoSalvar"]/span')
+    btn.click()
 
-    return
+# Condição para tempo
+if agora == td or agora == td1 and agora == td2 and agora == td3:
+    batPonto()
 
-
-
-if (td != agora):
-    while False:
-        time.sleep(td)
-    else:
-        batPonto()
-
-        if (td2 != agora):
-            while False:
-                time.sleep(td2)
-            else:
-                batPonto()
-
-                if (td3 != agora):
-                    while False:
-                        time.sleep(td3)
-                    else:
-                        batPonto()
-
-
-print(agora)
-
-driver.close()
+else:
+    time.sleep(14400)
