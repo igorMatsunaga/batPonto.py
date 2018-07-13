@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 from selenium.webdriver.common.keys import Keys
 import time
 
-username = 'igortomio'
-password = 'Abril123123'
+username = 'nomeusuario'
+password = 'senha'
 agora = datetime.now()
 td = '2018-04-29 07:30:01.804925'
 td1 = '2018-04-30 11:30:01.804925'
