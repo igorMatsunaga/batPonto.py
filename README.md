@@ -1,3 +1,3 @@
 "# batPonto.py" 
 
-Robo para bater ponto do controle de frequencia.
+Robo para bater ponto de controle de frequência.
